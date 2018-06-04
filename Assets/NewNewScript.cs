@@ -57,7 +57,7 @@ public class SwitchData
 public class NewNewScript : MonoBehaviour
 {
 
-    Text telemetryBox; //declaring text object to be used later to set equal to the "Telemetry" object we find
+    //Text telemetryBox; //declaring text object to be used later to set equal to the "Telemetry" object we find
     Text p_sub, t_sub, v_fan, t_eva, p_o2, rate_o2, cap_battery, p_h2o_g, p_h2o_l, p_sop, rate_sop;
     Text alertsBox;
 
@@ -81,11 +81,11 @@ public class NewNewScript : MonoBehaviour
 
         // Find the "Telemetry" Text canvas object and assign it to telemetryBox
         // The position, initial message, positioning, font, etc are all defined in the Unity Inspector
-        if ((telemetryBox == null) && (transform.Find("Telemetry") != null)) //if we havent assigned anything to telemetryBox and havent found Telemetry then... 
+        if ((p_sub == null) && (transform.Find("Alerts") != null)) //if we havent assigned anything to telemetryBox and havent found Telemetry then... 
         {
-            /*Transform child = transform.Find("Telemetry"); //define a Transform object named "child" set it equal to the UI text element called Telemetry 
-            telemetryBox = child.GetComponent<Text>(); //Get the text component of the child thing above and set equal to the text class object "telemetryBox" - this is what we change each time to change text
-            Debug.Log(telemetryBox.text); */
+            //Transform child = transform.Find("Telemetry"); //define a Transform object named "child" set it equal to the UI text element called Telemetry 
+            //telemetryBox = child.GetComponent<Text>(); //Get the text component of the child thing above and set equal to the text class object "telemetryBox" - this is what we change each time to change text
+            //Debug.Log(telemetryBox.text); 
 
             Transform child = transform.Find("P_sub");
             p_sub = child.GetComponent<Text>();
@@ -151,7 +151,7 @@ public class NewNewScript : MonoBehaviour
     void Update()
     {
 
-        if ((telemetryBox == null) || (alertsBox == null)) { return; }  // If telemetryBox or alertsBox has not been initialized above in start then just return...(too soon, not initialized yet)
+        if ((p_sub == null) || (alertsBox == null)) { return; }  // If telemetryBox or alertsBox has not been initialized above in start then just return...(too soon, not initialized yet)
 
         // Track overall elapsed time
         //elapsedSecs += Time.deltaTime;
@@ -164,7 +164,7 @@ public class NewNewScript : MonoBehaviour
             // Time to refresh the data, reset the timer and get new suit data
             refreshTimer = 0; //reset the timer
             telemetrydata = RefreshData(); //refresh the data
-            telemetryBox.text = "Sub Pressure: " + telemetrydata.p_sub.ToString() + "Sub Temperature: " + telemetrydata.t_sub.ToString();
+            //telemetryBox.text = "Sub Pressure: " + telemetrydata.p_sub.ToString() + "Sub Temperature: " + telemetrydata.t_sub.ToString();
             p_sub.text = "Sub Pressure: " + telemetrydata.p_sub.ToString();
             t_sub.text = "Sub Temperature: " + telemetrydata.t_sub.ToString();
             v_fan.text = "Fan Speed: " + telemetrydata.v_fan.ToString();
